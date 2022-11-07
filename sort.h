@@ -1,51 +1,54 @@
-#ifndef DECK_H
-#define DECK_H
+#ifndef SORT_H
+#define SORT_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * enum kind_e - Enumeration of card suits.
- * @SPADE: Spades suit.
- * @HEART: Hearts suit.
- * @CLUB: Clubs suit.
- * @DIAMOND: Diamonds suit.
- */
-typedef enum kind_e
-
-
-	SPADE = 0,
-	HEART,
-	CLUB,
-	DIAMOND
-} kind_t;
+/* Comparison direction macros for bitonic sort */
+#define UP 0
+#define DOWN 1
 
 /**
- * struct card_s - Playing card
- *
- * @value: Value of the card
- * From "Ace" to "King"
- * @kind: Kind of the card
+ * enum bool - Enumeration of Boolean values.
+ * @false: Equals 0.
+ * @true: Equals 1.
  */
-typedef struct card_s
+typedef enum bool
 {
-	const char *value;
-	const kind_t kind;
-} card_t;
+	false = 0,
+	true
+} bool;
 
 /**
- * struct deck_node_s - Deck of card
+ * struct listint_s - Doubly linked list node
  *
- * @card: Pointer to the card of the node
- * @prev: Pointer to the previous node of the list
- * @next: Pointer to the next node of the list
+ * @n: Integer stored in the node
+ * @prev: Pointer to the previous element of the list
+ * @next: Pointer to the next element of the list
  */
-typedef struct deck_node_s
+typedef struct listint_s
 {
-	const card_t *card;
-	struct deck_node_s *prev;
-	struct deck_node_s *next;
-} deck_node_t;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
+} listint_t;
 
-void sort_deck(deck_node_t **deck);
+/* Printing helper functions */
+void print_array(const int *array, size_t size);
+void print_list(const listint_t *list);
 
-#endif /* DECK_H */
+/* Sorting algoritms */
+void bubble_sort(int *array, size_t size);
+void insertion_sort_list(listint_t **list);
+void selection_sort(int *array, size_t size);
+void quick_sort(int *array, size_t size);
+void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
+void counting_sort(int *array, size_t size);
+void merge_sort(int *array, size_t size);
+void heap_sort(int *array, size_t size);
+void radix_sort(int *array, size_t size);
+void bitonic_sort(int *array, size_t size);
+void quick_sort_hoare(int *array, size_t size);
+
+#endif /* SORT_H */
