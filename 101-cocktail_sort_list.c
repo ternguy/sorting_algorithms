@@ -5,7 +5,7 @@ void swap_node_behind(listint_t **list, listint_t **tail, listint_t **shaker);
 void cocktail_sort_list(listint_t **list);
 
 /**
- * swap_node_ahead - Swap a node in a listint_t doubly-linked list
+ * swap_node_ahead - Swaps a node in a listint_t doubly-linked list
  *                   list of integers with the node ahead of it.
  * @list: A pointer to the head of a doubly-linked list of integers.
  * @tail: A pointer to the tail of the doubly-linked list.
